@@ -14,4 +14,12 @@ get at least some idea of what's going on.
 
 The main code for the game, and where you will want to make
 enhancements is in `game.js`. Comments in that file and in
-`clicker.js`
+`clicker.js` explain how the two are connected.
+
+Some obvious enhancements might be:
+
+- Adding more types of properties with different prices and payoffs.
+- Make thing look nicer using CSS.
+- Using images instead of just text (Look up [`<img>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img) tags to get started.)
+- Make prices and payoffs change over time to make the game more interesting.
+
