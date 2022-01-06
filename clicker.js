@@ -95,12 +95,10 @@ function animate() {
     // it has been since the last time we were called so we can pass
     // that value to the `update` function.
     if (!stopped && update(timestamp - previous)) {
-
       // Immediately request to be called again for the next frame. It
       // may seem a bit odd that we can reference `step` while we're
       // still defining it but it actually works fine.
       requestAnimationFrame(step);
-
     }
 
     // Update previous so the next call to step will compute the
@@ -111,5 +109,3 @@ function animate() {
   // Start the the animation loop.
   requestAnimationFrame(step);
 }
-
-

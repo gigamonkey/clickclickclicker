@@ -12,8 +12,10 @@ let housePrice = 10;
 let houseIncomePerSecond = 1;
 
 // Called once by the clicker framework when the page is loaded.
+// For now, use this so hook up an event handler on the "Buy House!"
+// span.
 function setup() {
-    document.getElementById("buy-house").onclick = e => buy("house");
+    document.getElementById("buy-house").onclick = buyHouse;
 }
 
 // Called for each mouse click.
@@ -27,7 +29,8 @@ function click() {
 // will stop.
 function update(elapsed) {
 
-  // Update values
+  // First, update the state of the world based on the amount of time
+  // that has elapsed since the last time we were called.
   coins += incomePerSecond() * elapsed / 1000;
 
   // Then update the counts in the document.
@@ -35,20 +38,19 @@ function update(elapsed) {
   document.getElementById("houses").innerText = "" + Math.floor(houses);
 
   // And display a clickable span if we can afford a house.
-  document.getElementById("buy-house").style.display = coins >= housePrice ? 'inline' : 'none';
+  if (coins >= housePrice) {
+    document.getElementById("buy-house").style.display = 'inline';
+  } else {
+    document.getElementById("buy-house").style.display = 'none';
+  }
 
   // Keep going forever.
   return true;
 }
 
-// Buy something. At the moment we only know how to buy a house.
-function buy(what) {
-  if (what === "house") {
+function buyHouse() {
     coins -= housePrice;
     houses++;
-  } else {
-    console.log(`Don't know how to buy ${what}`)
-  }
 }
 
 // Compute the number of coins of passive income (i.e. not from
