@@ -1,0 +1,9 @@
+#toBuy span {
+  padding: 3px;
+  background: blue;
+  color: white;
+  border: thin solid blue;
+  border-radius: 3px;
+}
+
+#stop { float: right; }
