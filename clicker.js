@@ -22,13 +22,14 @@
 // don't understand--I wrote this so you wouldn't have to as some of
 // it is a bit advanced for just now.
 
-// This is the event that kicks everything off. It fires several times
-// as the document goes through various steps of being set up bythe
-// browser. When the readyState property is 'complete', it is
-// completely ready to go so we wait until then to do anything.
-document.addEventListener('readystatechange', event => {
+// This is the function that kicks everything off. Look just below the
+// definition of this function to see how we register it to handle an
+// event the browser fires as the document is loaded. It will be called
+// several times as the document goes through various steps of being
+// set up by the browser but the last time it is called, the readyState
+// property will be 'complete' so we wait until then to do anything.
+function start(event) {
   if (event.target.readyState === 'complete') {
-
     // This gets the very root of the document tree, corresponding to
     // the <html> element in index.html.
     let doc = document.documentElement;
@@ -51,7 +52,10 @@ document.addEventListener('readystatechange', event => {
     // Start the animation loop. See below for details.
     animate();
   }
-});
+}
+// Arrange to have `start` called as the HTML document is loaded by the
+// browser. 
+document.addEventListener('readystatechange', start);
 
 
 // The animation loop. This uses the browser's built in
@@ -63,7 +67,8 @@ document.addEventListener('readystatechange', event => {
 // being called.
 function animate() {
 
-  // For now give us a way to stop the animation loop.
+  // For now give us a way to stop the animation loop since sometimes
+  // replit gets sad when a page is doing a lot of work.
   let stopped = false;
 
   // Attach an event handler to the stop button that just sets the
@@ -106,3 +111,5 @@ function animate() {
   // Start the the animation loop.
   requestAnimationFrame(step);
 }
+
+
