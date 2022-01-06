@@ -1,3 +1,5 @@
+#stop { float: right; }
+
 #toBuy span {
   padding: 3px;
   background: blue;
@@ -6,4 +8,3 @@
   border-radius: 3px;
 }
 
-#stop { float: right; }

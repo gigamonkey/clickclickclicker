@@ -1,7 +1,7 @@
 // This file contains the code for the clicker game that is required by the framework
 // defined in clicker.js. The only requirements are that you define three functions:
 // `setup`, `click`, and `update`. See the code in clicker.js for more discussion 
-// of how they are used. Simple version of both functions are defined below.
+// of how they are used. Simple version of all three functions are defined below.
 
 let coins = 0;
 let houses = 0;
@@ -37,10 +37,11 @@ function update(elapsed) {
   // Update values
   coins += incomePerSecond() * elapsed / 1000;
 
-  // Then update the document.
+  // Then update the counts in the document.
   document.getElementById("coins").innerText = "" + Math.floor(coins);
   document.getElementById("houses").innerText = "" + Math.floor(houses);
 
+  // And display a clickable span if we can afford a house.
   document.getElementById("buy-house").style.display = coins >= housePrice ? 'inline' : 'none';
 
   // Keep going forever.
